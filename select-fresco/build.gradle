@@ -31,46 +31,46 @@ dependencies {
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
     implementation Libs.Fresco.core
-    implementation "com.jarvis.libraries:select-base:1.0.0"
+    implementation project(":select-base")
 }
 
-apply plugin: 'maven-publish'
-project.afterEvaluate {
-
-    def githubProperties = new Properties()
-    githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
-    def getGroupPageId = { ->
-        return "com.jarvis.libraries"
-    }
-
-    def getVersionName = { ->
-        return "1.0.0"
-    }
-
-    def getArtifactId = { ->
-        return "select-fresco"
-    }
-
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId getGroupPageId()
-                artifactId getArtifactId()
-                version getVersionName()
-                artifact("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
-            }
-        }
-
-        repositories {
-            maven {
-                name = "GithubPackages"
-                url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameViewt")
-                credentials {
-                    username = githubProperties['gpr.user']
-                    password = githubProperties['gpr.key']
-                }
-            }
-        }
-    }
-}
+//apply plugin: 'maven-publish'
+//project.afterEvaluate {
+//
+//    def githubProperties = new Properties()
+//    githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+//
+//    def getGroupPageId = { ->
+//        return "com.jarvis.libraries"
+//    }
+//
+//    def getVersionName = { ->
+//        return "1.0.0"
+//    }
+//
+//    def getArtifactId = { ->
+//        return "select-fresco"
+//    }
+//
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                groupId getGroupPageId()
+//                artifactId getArtifactId()
+//                version getVersionName()
+//                artifact("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
+//            }
+//        }
+//
+//        repositories {
+//            maven {
+//                name = "GithubPackages"
+//                url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameViewt")
+//                credentials {
+//                    username = githubProperties['gpr.user']
+//                    password = githubProperties['gpr.key']
+//                }
+//            }
+//        }
+//    }
+//}

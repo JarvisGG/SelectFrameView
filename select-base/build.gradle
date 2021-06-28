@@ -33,43 +33,43 @@ dependencies {
     implementation Libs.AndroidX.dynamicanimation
 }
 
-apply plugin: 'maven-publish'
-project.afterEvaluate {
-
-    def githubProperties = new Properties()
-    githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
-
-    def getGroupPageId = { ->
-        return "com.jarvis.libraries"
-    }
-
-    def getVersionName = { ->
-        return "1.0.0"
-    }
-
-    def getArtifactId = { ->
-        return "select-base"
-    }
-
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId getGroupPageId()
-                artifactId getArtifactId()
-                version getVersionName()
-                artifact("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
-            }
-        }
-
-        repositories {
-            maven {
-                name = "GithubPackages"
-                url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameView")
-                credentials {
-                    username = githubProperties['gpr.user']
-                    password = githubProperties['gpr.key']
-                }
-            }
-        }
-    }
-}
+//apply plugin: 'maven-publish'
+//project.afterEvaluate {
+//
+//    def githubProperties = new Properties()
+//    githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+//
+//    def getGroupPageId = { ->
+//        return "com.jarvis.libraries"
+//    }
+//
+//    def getVersionName = { ->
+//        return "1.0.0"
+//    }
+//
+//    def getArtifactId = { ->
+//        return "select-base"
+//    }
+//
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                groupId getGroupPageId()
+//                artifactId getArtifactId()
+//                version getVersionName()
+//                artifact("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
+//            }
+//        }
+//
+//        repositories {
+//            maven {
+//                name = "GithubPackages"
+//                url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameView")
+//                credentials {
+//                    username = githubProperties['gpr.user']
+//                    password = githubProperties['gpr.key']
+//                }
+//            }
+//        }
+//    }
+//}
