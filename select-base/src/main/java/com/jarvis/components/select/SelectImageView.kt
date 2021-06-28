@@ -97,13 +97,6 @@ class SelectImageView<T>: AppCompatImageView, ISelectView<T> {
         return super.verifyDrawable(dr)
     }
 
-    override fun doScaleChange(scale: Float) {
-        pivotX = width / 2f
-        pivotY = 0f
-        scaleX = scale
-        scaleY = scale
-    }
-
     override fun registerFrameChangeListener(listener: IFrameChangeListener) {
         drawable.registerFrameChangeListener(listener)
     }

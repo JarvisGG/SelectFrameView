@@ -10,8 +10,6 @@ import com.jarvis.components.select.frame.IFrameChangeListener
  */
 interface ISelectView<T> {
 
-    fun doScaleChange(scale: Float)
-
     fun registerFrameChangeListener(listener: IFrameChangeListener)
 
     fun registerDataTransform(transform: IFrameExchange<T>)
