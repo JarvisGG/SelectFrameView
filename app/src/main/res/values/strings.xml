@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="select_view_scale">scale</string>
+    <string name="select_view_focus">focus</string>
+    <string name="select_view_unfocus">unfocus</string>
+    <string name="select_view_refresh">refresh</string>
+    <string name="select_view_function">function</string>
+</resources>

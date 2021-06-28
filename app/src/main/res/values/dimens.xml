@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mark">40sp</dimen>
+    <dimen name="headline1">28sp</dimen>
+    <dimen name="headline2">24sp</dimen>
+    <dimen name="title">20sp</dimen>
+    <dimen name="subtitle1">18sp</dimen>
+    <dimen name="subtitle2">16sp</dimen>
+    <dimen name="body">14sp</dimen>
+    <dimen name="caption0">13sp</dimen>
+    <dimen name="caption1">12sp</dimen>
+    <dimen name="caption2">11sp</dimen>
+    <dimen name="caption3">12sp</dimen>
+</resources>
