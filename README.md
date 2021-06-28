@@ -11,8 +11,7 @@ Name | Display
 --- | ---
 SelectSimpleDraweeView | <img src="https://github.com/JarvisGG/SelectFrameView/blob/develop/capture/select_frame.gif?raw=true">
 
-#### 用法
-
+### 用法
 
 ``` kotlin
 class VisionSelectSimpleDraweeView: SelectSimpleDraweeView<VisionBoxInfo> {
@@ -64,6 +63,39 @@ focus.setOnClickListener {
 val unFocus = findViewById<Button>(R.id.append_unfocus)
 unFocus.setOnClickListener {
     selectView.showFrameData(VisionBoxInfo(0.7f, 0.75f, 0.4f, 0.4f))
+}
+```
+
+### 引入
+方式 1:
+``` Gradle
+repositories {
+    // ...
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameView")
+        credentials {
+            username = "JarvisGG"
+            password = "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"
+        }
+    }
+}
+
+dependencies {
+    implementation Libs.AndroidX.dynamicanimation // 目前 demo 依赖管理采用 buildSrc
+    implementation "com.jarvis.libraries:select-base:1.0.0"
+    // 如果需要 fresco 扩展，请添加
+    implementation Libs.Fresco.core
+    implementation "com.jarvis.libraries:select-fresco:1.0.0"
+}
+```
+方式 2:
+``` Gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+dependencies {
+    implementation 'com.github.JarvisGG:SelectFrameView:1.0.1'
 }
 ```
 

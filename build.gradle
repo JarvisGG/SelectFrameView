@@ -15,6 +15,14 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/JarvisGG/SelectFrameView")
+            credentials {
+                username = "JarvisGG"
+                password = "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"
+            }
+        }
+        maven { url 'https://jitpack.io' }
     }
 }
 
