@@ -22,9 +22,11 @@ interface ISelectFrame: IAnimEngine.IAnimItem, Comparable<ISelectFrame> {
 
     var isAutoFocus: Boolean
 
-    var isAnimating: Boolean
+    var isSelected: Boolean
 
-    var animateDirection: Int
+    var isSelecting: Boolean
+
+    var isUnSelecting: Boolean
 
     fun calculateAreas(fraction: Float)
 

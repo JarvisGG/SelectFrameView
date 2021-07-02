@@ -20,8 +20,8 @@ class SelectFrame(
     override var isSelected: Boolean = false,
     override var host: IFrameController,
     override var isAutoFocus: Boolean = true,
-    override var isAnimating: Boolean = false,
-    override var animateDirection: Int = 0
+    override var isSelecting: Boolean = false,
+    override var isUnSelecting: Boolean = false
 ) : ISelectFrame, ITouchHandler.Callback {
 
     private var frame = RectF()
@@ -134,16 +134,26 @@ class SelectFrame(
     }
 
     private fun markAnim(res: Int) {
-        animateDirection = res
-        isAnimating = (res != 0)
+        when (res) {
+            0 -> {
+                isSelecting = false
+                isUnSelecting = false
+            }
+            1 -> {
+                isSelecting = true
+                isUnSelecting = false
+            }
+            -1 -> {
+                isSelecting = false
+                isUnSelecting = true
+            }
+        }
     }
 
     override fun onFrameDraw(canvas: Canvas) {
         canvas.save()
-        if (isAnimating || isSelected) {
-            drawHollow(canvas)
-            drawBounds(canvas)
-        }
+        drawHollow(canvas)
+        drawBounds(canvas)
         canvas.restore()
     }
 
@@ -171,9 +181,7 @@ class SelectFrame(
     override fun onAnimFinish() {
         isSelected = !isSelected
         calculateAreas(if (isSelected) 1f else 0f)
-        if (isAnimating) {
-            markAnim(0)
-        }
+        markAnim(0)
         host.doInternalInvalidate()
     }
 
@@ -236,8 +244,7 @@ class SelectFrame(
     }
 
     override fun onPointTouchDown() {
-        if (isSelected) return
-        if (isAnimating) return
+        if (isAnimating()) return
         host.onPointTouchDown(data)
     }
 
@@ -310,6 +317,10 @@ class SelectFrame(
         touchHandler.onHandleTouchByFrame(ev)
 
     override fun compareTo(other: ISelectFrame): Int {
-        return if(other.isAnimating) 1 else -1
+        return if(other.isAnimating()) 1 else -1
+    }
+
+    override fun isAnimating(): Boolean {
+        return isSelecting || isUnSelecting
     }
 }

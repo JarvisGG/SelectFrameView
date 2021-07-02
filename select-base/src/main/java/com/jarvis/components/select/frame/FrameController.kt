@@ -48,29 +48,27 @@ class FrameController(
         if (activeFrame?.data?.origin == data.origin) {
             return
         }
-        synchronized(lock2) {
-            cleanUnFocusFrames()
-            var index = -1
-            frames.forEachIndexed { i, fd ->
-                if (fd.data.origin == data.origin) {
-                    index = i
-                }
+        cleanUnFocusFrames()
+        var index = -1
+        frames.forEachIndexed { i, fd ->
+            if (fd.data.origin == data.origin) {
+                index = i
             }
-            if (index == -1) {
-                val frameItem = buildUIFrame(data, false)
-                frameItem.onBoundsChange(bounds)
-                frames.add(frameItem)
-                index = frames.size - 1
-            } else {
-                val extraFrame = frames[index]
-                if (extraFrame.animateDirection == 1) {
-                    return
-                }
-            }
-            doInternalInvalidate()
-            activeFrame = frames[index]
-            doFrameShow(activeFrame!!, hasAnim)
         }
+        if (index == -1) {
+            val frameItem = buildUIFrame(data, false)
+            frameItem.onBoundsChange(bounds)
+            frames.add(frameItem)
+            index = frames.size - 1
+        } else {
+            val extraFrame = frames[index]
+            if (extraFrame.isSelecting) {
+                return
+            }
+        }
+        doInternalInvalidate()
+        activeFrame = frames[index]
+        doFrameShow(activeFrame!!, hasAnim)
     }
 
     private fun cleanUnFocusFrames() {

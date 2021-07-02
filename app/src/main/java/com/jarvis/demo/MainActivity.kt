@@ -1,6 +1,8 @@
 package com.jarvis.demo
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,8 @@ class MainActivity: AppCompatActivity() {
     private val transform by lazy {
         VisionInfoTransform()
     }
+
+    private val handler by lazy { Handler(Looper.getMainLooper()) }
 
     private lateinit var selectView: VisionSelectSimpleDraweeView
 
@@ -72,6 +76,12 @@ class MainActivity: AppCompatActivity() {
         val focus = findViewById<Button>(R.id.append_focus)
         focus.setOnClickListener {
             selectView.showFrameData(focusList[1])
+//            handler.postDelayed({
+//                selectView.showFrameData(focusList[0])
+//            }, 300)
+//            handler.postDelayed({
+//                selectView.showFrameData(focusList[1])
+//            }, 1400)
         }
 
         /** 选择空焦点 frame */

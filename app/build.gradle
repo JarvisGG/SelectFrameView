@@ -42,7 +42,9 @@ dependencies {
     androidTestImplementation Libs.Test.espressoCore
     implementation Libs.AndroidX.dynamicanimation
     implementation Libs.Fresco.core
-    implementation "com.jarvis.libraries:select-fresco:1.0.0"
-    implementation "com.jarvis.libraries:select-base:1.0.0"
+    implementation project(':select-fresco')
+    implementation project(':select-base')
+//    implementation "com.jarvis.libraries:select-fresco:1.0.0"
+//    implementation "com.jarvis.libraries:select-base:1.0.0"
 //    implementation 'com.github.JarvisGG:SelectFrameView:1.0.0'
 }

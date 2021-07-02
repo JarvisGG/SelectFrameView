@@ -33,7 +33,7 @@ interface IAnimEngine {
 
     interface IAnimItem {
 
-        var isSelected: Boolean
+        fun isAnimating(): Boolean
 
         fun onAnimStart()
 
