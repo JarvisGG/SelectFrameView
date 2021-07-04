@@ -83,10 +83,10 @@ repositories {
 
 dependencies {
     implementation Libs.AndroidX.dynamicanimation // 目前 demo 依赖管理采用 buildSrc
-    implementation "com.jarvis.libraries:select-base:1.0.0"
+    implementation "com.jarvis.libraries:select-base:1.0.3"
     // 如果需要 fresco 扩展，请添加
     implementation Libs.Fresco.core
-    implementation "com.jarvis.libraries:select-fresco:1.0.0"
+    implementation "com.jarvis.libraries:select-fresco:1.0.2"
 }
 ```
 方式 2:
@@ -95,7 +95,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation 'com.github.JarvisGG:SelectFrameView:1.0.4'
+    implementation 'com.github.JarvisGG:SelectFrameView:1.0.5'
 }
 ```
 
