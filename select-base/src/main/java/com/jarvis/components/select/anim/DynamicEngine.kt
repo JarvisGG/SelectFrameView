@@ -35,7 +35,7 @@ class DynamicEngine(override val host: ISelectWrapper): IAnimEngine {
     }
 
     override fun doExecute(
-        frame: IAnimEngine.IAnimItem,
+        frame: IAnimEngine.IAnimItem?,
         start: Float?,
         end: Float,
         hasAnim: Boolean
@@ -44,7 +44,7 @@ class DynamicEngine(override val host: ISelectWrapper): IAnimEngine {
     }
 
     private fun doExecuteInternal(
-        frame: IAnimEngine.IAnimItem,
+        frame: IAnimEngine.IAnimItem?,
         start: Float?,
         end: Float,
         hasAnim: Boolean
@@ -65,7 +65,8 @@ class DynamicEngine(override val host: ISelectWrapper): IAnimEngine {
             executor?.animateToFinalPosition(end * DEFAULT_STEP)
         } else {
             holder.onAnimStart()
-            doEnd()
+            holder.onAnimUpdate(endValue)
+            holder.onAnimFinish()
         }
     }
 
@@ -79,8 +80,6 @@ class DynamicEngine(override val host: ISelectWrapper): IAnimEngine {
 
     override fun doEnd() {
         executor?.cancel()
-        holder.onAnimUpdate(endValue)
-        holder.onAnimFinish()
     }
 
     override fun doCancel() {

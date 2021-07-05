@@ -68,7 +68,14 @@ class FrameController(
         }
         doInternalInvalidate()
         activeFrame = frames[index]
-        doFrameShow(activeFrame!!, hasAnim)
+        doFrameAction(activeFrame, hasAnim)
+    }
+
+    @SuppressWarnings("must called after onBoundsChange.")
+    override fun doFrameHide(hasAnim: Boolean) {
+        doInternalInvalidate()
+        activeFrame = null
+        doFrameAction(activeFrame, hasAnim)
     }
 
     private fun cleanUnFocusFrames() {
@@ -110,7 +117,7 @@ class FrameController(
         return handle
     }
 
-    override fun doFrameShow(item: ISelectFrame, hasAnim: Boolean) {
+    override fun doFrameAction(item: ISelectFrame?, hasAnim: Boolean) {
         if (animEngine.isAnim()) {
             animEngine.doEnd()
         }

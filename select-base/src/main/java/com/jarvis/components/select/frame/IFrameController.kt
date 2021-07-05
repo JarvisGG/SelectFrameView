@@ -30,9 +30,11 @@ interface IFrameController: IFrameChangeListener {
 
     fun dispatchTouchEvent(ev: MotionEvent?): Boolean
 
-    fun doFrameShow(data: FrameData, hasAnim: Boolean)
+    fun doFrameShow(data: FrameData, hasAnim: Boolean = true)
 
-    fun doFrameShow(item: ISelectFrame, hasAnim: Boolean)
+    fun doFrameHide(hasAnim: Boolean = true)
+
+    fun doFrameAction(item: ISelectFrame?, hasAnim: Boolean = true)
 
     fun doInternalInvalidate()
 

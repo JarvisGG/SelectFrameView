@@ -19,7 +19,7 @@ interface IAnimEngine {
 
     @MainThread
     fun doExecute(
-        frame: IAnimItem,
+        frame: IAnimItem?,
         start: Float?,
         end: Float,
         hasAnim: Boolean

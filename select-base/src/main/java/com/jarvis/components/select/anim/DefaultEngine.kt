@@ -21,7 +21,7 @@ class DefaultEngine(override val host: ISelectWrapper) : IAnimEngine {
     private var newFrame: IAnimEngine.IAnimItem? = null
 
     override fun doExecute(
-        frame: IAnimEngine.IAnimItem,
+        frame: IAnimEngine.IAnimItem?,
         start: Float?,
         end: Float,
         hasAnim: Boolean

@@ -12,7 +12,9 @@ import com.jarvis.components.select.frame.IFrameChangeListener
 interface ISelectWrapper {
    fun buildFrames(data: List<FrameData>)
 
-   fun doShowFrame(frame: FrameData, hasAnim: Boolean)
+   fun doShowFrame(frame: FrameData, hasAnim: Boolean = true)
+
+   fun doFrameHide(hasAnim: Boolean = true)
 
    fun clearFrames()
 

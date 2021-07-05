@@ -84,6 +84,10 @@ class SelectDrawable(
         frameController.doFrameShow(frame, hasAnim)
     }
 
+    override fun doFrameHide(hasAnim: Boolean) {
+        frameController.doFrameHide(hasAnim)
+    }
+
     override fun onTouchEvent(ev: MotionEvent?): Boolean {
         frameController.dispatchTouchEvent(ev)
         return true

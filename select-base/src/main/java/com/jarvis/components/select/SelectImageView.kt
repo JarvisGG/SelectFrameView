@@ -78,6 +78,14 @@ class SelectImageView<T>: AppCompatImageView, ISelectView<T> {
         requestLayout()
     }
 
+    override fun hideFrameData(hasAnim: Boolean) {
+        if (transform == null) return
+        pendingQueue.add(Runnable {
+            drawable.doFrameHide(hasAnim)
+        })
+        requestLayout()
+    }
+
     override fun clearFrames() {
         pendingQueue.add(Runnable {
             drawable.clearFrames()

@@ -18,6 +18,8 @@ interface ISelectView<T> {
 
     fun showFrameData(data: T, hasAnim: Boolean = true)
 
+    fun hideFrameData(hasAnim: Boolean = true)
+
     fun clearFrames()
 
     interface ISelectFrameChange<T> {

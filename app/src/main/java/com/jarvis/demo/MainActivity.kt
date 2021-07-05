@@ -90,6 +90,12 @@ class MainActivity: AppCompatActivity() {
             selectView.showFrameData(VisionBoxInfo(0.7f, 0.75f, 0.4f, 0.4f))
         }
 
+        /** 隐藏 frames */
+        val dismiss = findViewById<Button>(R.id.append_dismiss)
+        dismiss.setOnClickListener {
+            selectView.hideFrameData()
+        }
+
         val scaleSeekBar = findViewById<SeekBar>(R.id.seekbar_scale)
         scaleSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {

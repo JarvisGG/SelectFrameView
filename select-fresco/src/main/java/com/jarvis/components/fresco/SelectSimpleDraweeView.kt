@@ -59,7 +59,7 @@ open class SelectSimpleDraweeView<T>: SimpleDraweeView, ISelectView<T> {
         }
     }
 
-    override fun setFrameData(data: java.util.ArrayList<T>) {
+    override fun setFrameData(data: ArrayList<T>) {
         if (transform == null) return
         pendingQueue.add(Runnable {
             drawable.clearFrames()
@@ -73,6 +73,14 @@ open class SelectSimpleDraweeView<T>: SimpleDraweeView, ISelectView<T> {
         if (transform == null) return
         pendingQueue.add(Runnable {
             drawable.doShowFrame(transform!!.encode(data, false), hasAnim)
+        })
+        requestLayout()
+    }
+
+    override fun hideFrameData(hasAnim: Boolean) {
+        if (transform == null) return
+        pendingQueue.add(Runnable {
+            drawable.doFrameHide(hasAnim)
         })
         requestLayout()
     }
